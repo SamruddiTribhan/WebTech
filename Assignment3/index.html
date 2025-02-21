@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ecf0f1;
+        }
+        .calculator {
+            width: 280px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #34495e;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            color: white;
+        }
+        .display {
+            width: 90%;
+            height: 40px;
+            font-size: 20px;
+            text-align: right;
+            margin-bottom: 10px;
+            padding: 5px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        table {
+            width: 100%;
+        }
+        input[type="button"] {
+            width: 60px;
+            height: 50px;
+            font-size: 18px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            background: #3498db;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        input[type="button"]:hover {
+            background: #5dade2;
+        }
+        .operator {
+            background: #f39c12;
+            color: white;
+        }
+        .operator:hover {
+            background: #e67e22;
+        }
+        .clear {
+            background: #e74c3c;
+            color: white;
+        }
+        .clear:hover {
+            background: #c0392b;
+        }
+    </style>
+    <script type="text/javascript">
+        var flag = 0, a, b, c, d;
+        function perform(value) {
+            if (flag == 0) {
+                b = parseInt(value);
+                a = document.f1.t1.value;
+                document.f1.t1.value = "";
+                flag = 1;
+            } else {
+                c = document.f1.t1.value;
+                document.f1.t1.value = "";
+                if (b == 1) {
+                    d = parseFloat(a) + parseFloat(c);
+                } else if (b == 2) {
+                    d = parseFloat(a) - parseFloat(c);
+                } else if (b == 3) {
+                    d = parseFloat(a) * parseFloat(c);
+                } else if (b == 4) {
+                    d = parseFloat(a) / parseFloat(c);
+                }
+                document.f1.t1.value = d;
+                flag = 0;
+            }
+        }
+        function insert(num) {
+            document.f1.t1.value += num;
+        }
+        function clearDisplay() {
+            document.f1.t1.value = "";
+            flag = 0;
+        }
+    </script>
+</head>
+
+<body>
+    <div class="calculator">
+        <form name="f1">
+            <input type="text" name="t1" id="t1" class="display" placeholder="Enter number" readonly />
+            <br>
+            <table>
+                <tr>
+                    <td><input type="button" value="7" onclick="insert(7)" /></td>
+                    <td><input type="button" value="8" onclick="insert(8)" /></td>
+                    <td><input type="button" value="9" onclick="insert(9)" /></td>
+                    <td><input type="button" class="operator" value="/" onclick="perform(4)" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="4" onclick="insert(4)" /></td>
+                    <td><input type="button" value="5" onclick="insert(5)" /></td>
+                    <td><input type="button" value="6" onclick="insert(6)" /></td>
+                    <td><input type="button" class="operator" value="*" onclick="perform(3)" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="1" onclick="insert(1)" /></td>
+                    <td><input type="button" value="2" onclick="insert(2)" /></td>
+                    <td><input type="button" value="3" onclick="insert(3)" /></td>
+                    <td><input type="button" class="operator" value="-" onclick="perform(2)" /></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="0" onclick="insert(0)" /></td>
+                    <td><input type="button" value="." onclick="insert('.')" /></td>
+                    <td><input type="button" class="operator" value="=" onclick="perform(5)" /></td>
+                    <td><input type="button" class="operator" value="+" onclick="perform(1)" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="button" class="clear" value="CLR" onclick="clearDisplay()" style="width: 130px;" /></td>
+                    <td colspan="2"><input type="button" class="clear" value="MRF" onclick="clearDisplay()" style="width: 130px;" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+
+</html>
+
